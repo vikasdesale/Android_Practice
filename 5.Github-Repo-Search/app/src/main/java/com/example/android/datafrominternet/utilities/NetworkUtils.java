@@ -29,7 +29,6 @@ import java.util.Scanner;
  */
 public class NetworkUtils {
 
-
     final static String GITHUB_BASE_URL =
             "https://api.github.com/search/repositories";
 
@@ -49,7 +48,6 @@ public class NetworkUtils {
      * @return The URL to use to query the weather server.
      */
     public static URL buildUrl(String githubSearchQuery) {
-        // COMPLETED (1) Fill in this method to build the proper Github query URL
         Uri builtUri = Uri.parse(GITHUB_BASE_URL).buildUpon()
                 .appendQueryParameter(PARAM_QUERY, githubSearchQuery)
                 .appendQueryParameter(PARAM_SORT, sortBy)
