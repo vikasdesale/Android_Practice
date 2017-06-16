@@ -26,9 +26,9 @@
     <!--TODO (4) Give the TextView 16dp of padding-->
     <!--TODO (5) Set the text size to 20sp-->
     <TextView
+        android:id="@+id/tv_toy_names"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
         android:textSize="20sp"
        android:padding="16dp"/>
 
