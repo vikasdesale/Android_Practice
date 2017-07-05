@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.3.1_e86f902fe50c9e0b61cd942a0d092e82c41ed993.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Dell\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\pre-dexed\debug\gson-2.7_dc630040e63120647b5f5c7805d5d2f6a1a7b436.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\pre-dexed\debug\support-annotations-25.3.1_6540600037f627704444b04797e3ae7892fad422.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\exploded-aar\io.reactivex\rxandroid\1.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="927e8ef5711b115b65b2f35495d77352be2b3c09">
+        <dex dex="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\pre-dexed\debug\io.reactivex-rxandroid-1.2.0_f4bda4431b046a7bd1b0e545949dadd13e846796.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.3.1_99e5c5d8f5fa3fc7b2fa4540e90ed6b651a045ff.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Dell\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.3.0\2b802460eea20f8f2ad9c08c74e0f14718e88aa9\okhttp-3.3.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2b802460eea20f8f2ad9c08c74e0f14718e88aa9">
+        <dex dex="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\pre-dexed\debug\okhttp-3.3.0_e274e8c221d61b2eea8ceba4192118470ac27fda.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.3.1_831eedb4e1fa4b19df00da214e9f0c1bb151b27b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Dell\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\adapter-rxjava\2.1.0\693eddc23e87ab13f9cf5001707ce8e7e1d1ff01\adapter-rxjava-2.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="693eddc23e87ab13f9cf5001707ce8e7e1d1ff01">
+        <dex dex="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\pre-dexed\debug\adapter-rxjava-2.1.0_d0b215d798692dd4894280758b2ca50f6cfad622.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.3.1_ccbd7b3c42efb6d930e4e1ad9a6dbb4ae8a5d12f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.3.1_855750a283d2dc1cef10bcfeadeb4902b99aa3ff.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.3.1_c1399a88871886e7a2a9d971b54b8d6b64ceca5c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.3.1_98f7902ff8b26549ca44bffa44ed373614eb9949.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.3.1_c032596100e8a4204b27ef8e9e17713a4eb70c70.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Dell\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.1.0\aa557d71ead91cbf26e0c316a0f593d168303309\converter-gson-2.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="aa557d71ead91cbf26e0c316a0f593d168303309">
+        <dex dex="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\pre-dexed\debug\converter-gson-2.1.0_cbadb6be31ff26e7c098e62b9a209e05a2ae1ab9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.3.1_b5941b627734d0797daf242536c72a059cfabdd2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Dell\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.8.0\5ea7af56cc7c567ed9856d99efb30740e9b17ff\okio-1.8.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="05ea7af56cc7c567ed9856d99efb30740e9b17ff">
+        <dex dex="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\pre-dexed\debug\okio-1.8.0_7b1810a2f82d740dd19149fcd92f8e50c8fb42cf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Dell\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.1.0\2de7cd8b95b7021b1d597f049bcb422055119f2c\retrofit-2.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2de7cd8b95b7021b1d597f049bcb422055119f2c">
+        <dex dex="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\pre-dexed\debug\retrofit-2.1.0_7f0eb4a98497c842767b547a35beb6e417750cfa.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Dell\.gradle\caches\modules-2\files-2.1\io.reactivex\rxjava\1.1.8\f9dbae366a6a3d6b5041c5e8db0dcdfdc35c27b5\rxjava-1.1.8.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f9dbae366a6a3d6b5041c5e8db0dcdfdc35c27b5">
+        <dex dex="F:\Github Working Dir\android practice\MyApplication\app\build\intermediates\pre-dexed\debug\rxjava-1.1.8_2e981846111a25feecd67eb6437070bc9fa5de58.jar" />
+    </item>
+
+</items>

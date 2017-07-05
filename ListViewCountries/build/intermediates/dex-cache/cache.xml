@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="F:\Github Working Dir\ListViewCountries\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.3.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="F:\Github Working Dir\ListViewCountries\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.3.0_0ceb56680dea3be1726b9c1c59bd6cc71f15541b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Github Working Dir\ListViewCountries\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.3.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="425c7b17887e5c3f8cbdf67ba171bc246f29b42c">
+        <dex dex="F:\Github Working Dir\ListViewCountries\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.3.0_9742a7699f0682e777bb33d19daafd578a30c5d6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Github Working Dir\ListViewCountries\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.3.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="70f23cb87278f89aa51e6f57e8f0fd5266572d95">
+        <dex dex="F:\Github Working Dir\ListViewCountries\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.3.0_22cb5a0e5ece04eddcf9ee92a272a7d4ecf3cf93.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Github Working Dir\ListViewCountries\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.3.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="93c10d68ab5ea070f15782ae6d3a28d1f1d8f45e">
+        <dex dex="F:\Github Working Dir\ListViewCountries\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.3.0_83beb0ff4dd88b12e2254e500eead5673acc4d91.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Github Working Dir\ListViewCountries\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.3.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="518768f3200963fbfec652f498da2c9d39245234">
+        <dex dex="F:\Github Working Dir\ListViewCountries\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.3.0_78000cb52de840425f02ce4bcb0934c5c7399e3c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.0\support-annotations-25.3.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="dd84903d2e1af25a6081ef9038ad863cb14ca3a0">
+        <dex dex="F:\Github Working Dir\ListViewCountries\app\build\intermediates\pre-dexed\debug\support-annotations-25.3.0_e91fca1d8851aa1868c2a653cb8e2828450a66a8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Github Working Dir\ListViewCountries\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.3.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4b746ef0fd46acb5aaf3d9ab9a4cec22c28d3211">
+        <dex dex="F:\Github Working Dir\ListViewCountries\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.3.0_5ded33b789a037c154404517df70bd29b9393226.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Github Working Dir\ListViewCountries\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.3.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="93c1199fcb0a34b980e6fff8350daff62e696ec2">
+        <dex dex="F:\Github Working Dir\ListViewCountries\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.3.0_5b18c6b3a6ea0ba4b1bc7706a54edce6ec475aee.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Github Working Dir\ListViewCountries\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.3.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d6a04527c17597019dad82777c5094a3d60d1c33">
+        <dex dex="F:\Github Working Dir\ListViewCountries\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.3.0_04eea008d657ca538e4166a0b47feb51d8dc1da2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Github Working Dir\ListViewCountries\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.3.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5cc5ef8347a6bafa14556cbd35230aa9b3431bb0">
+        <dex dex="F:\Github Working Dir\ListViewCountries\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.3.0_980ab1a6454c13d34d0e7ee5e9edaf6b69fef0db.jar" />
+    </item>
+
+</items>
