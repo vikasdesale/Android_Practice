@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ContactApp</string>
+    <string-array name="tabs">
+        <item>Contacts</item>
+        <item>SMS sent</item>
+    </string-array>
+</resources>
