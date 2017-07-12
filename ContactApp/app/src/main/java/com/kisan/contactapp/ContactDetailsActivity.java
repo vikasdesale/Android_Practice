@@ -1,5 +1,7 @@
 package com.kisan.contactapp;
 
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Build;
@@ -9,6 +11,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -16,13 +20,32 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.kisan.contactapp.database.ColumnsContacts;
+import com.kisan.contactapp.database.ColumnsSms;
 import com.kisan.contactapp.database.ContactsProvider;
 import com.kisan.contactapp.parcelable.Contact;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Optional;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Header;
+import retrofit2.http.POST;
+import retrofit2.http.Path;
+
+import static com.kisan.contactapp.fragments.ContactsUtil.insertSmsSent;
+import static com.kisan.contactapp.retrofit.ApiClient.APP_SID;
+import static com.kisan.contactapp.retrofit.ApiClient.AUTH_TOKEN;
+import static com.kisan.contactapp.retrofit.ApiClient.PHONE_FROM;
 
 
 public class ContactDetailsActivity extends AppCompatActivity {
@@ -52,6 +75,7 @@ public class ContactDetailsActivity extends AppCompatActivity {
     private long id;
     private Cursor mCursor;
     Contact contact;
+    int otp_number;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +88,7 @@ public class ContactDetailsActivity extends AppCompatActivity {
         mCursor.moveToFirst();
         contact = new Contact(mCursor);
         textName.setText("Name: " + contact.getFirstname() + " " + contact.getLastname());
+        textPhone.setText("Contact No: "+contact.getPhone());
 
     }
 
@@ -102,13 +127,15 @@ public class ContactDetailsActivity extends AppCompatActivity {
 
         alertDialogBuilderUserInput.setView(mView);
         phoneNo.setText(""+contact.getPhone());
-        otp.setText("Hi your otp is: "+getRandom());
+        otp_number=getRandom();
+        otp.setText("Hi your otp is: "+otp_number);
         alertDialogBuilderUserInput
                 .setCancelable(false)
                 .setPositiveButton("Send", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogBox, int id) {
+                       sendMessage(getApplicationContext(),msg.getText()+" "+otp.getText().toString(),phoneNo.getText().toString(),
+                               PHONE_FROM,otp_number,contact.getFirstname(),contact.getLastname());
 
-                        
                     }
                 })
 
@@ -125,5 +152,54 @@ public class ContactDetailsActivity extends AppCompatActivity {
 
     public int getRandom() {
         return 10000 + (int) (Math.random() * ((99999 - 10000) + 99999));
+    }
+    private void sendMessage(final Context context, final String body, final String to, String from, final int otp_number, final  String firstName, final String lastName) {
+
+
+        String base64EncodedCredentials = "Basic " + Base64.encodeToString(
+                (APP_SID + ":" + AUTH_TOKEN).getBytes(), Base64.NO_WRAP
+        );
+
+        Map<String, String> data = new HashMap<>();
+        data.put("From", from);
+        data.put("To", to);
+        data.put("Body", body);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.twilio.com/2010-04-01/")
+                .build();
+        TwilioApi api = retrofit.create(TwilioApi.class);
+
+        api.sendMessage(APP_SID, base64EncodedCredentials, data).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    Log.d("TAG", "onResponse->success");
+                    ContentValues values = new ContentValues(6);
+                    values.put(ColumnsSms.FIRSTNAME, firstName);
+                    values.put(ColumnsSms.LASTNAME, lastName);
+                    values.put(ColumnsSms.MOBILE_NO, to);
+                    values.put(ColumnsSms.MSG_CONTENT,body);
+                    values.put(ColumnsSms.DATE_SENT,System.currentTimeMillis());
+                    values.put(ColumnsSms.OTP_GENERATE,otp_number);
+
+                    insertSmsSent(context,values);
+                }else{ Log.d("TAG", "onResponse->failure");}
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.d("TAG", "onFailure");
+            }
+        });
+    }
+    interface TwilioApi {
+        @FormUrlEncoded
+        @POST("Accounts/{ACCOUNT_SID}/SMS/Messages.json")
+        Call<ResponseBody> sendMessage(
+                @Path("ACCOUNT_SID") String accountSId,
+                @Header("Authorization") String signature,
+                @FieldMap Map<String, String> metadata
+        );
     }
 }

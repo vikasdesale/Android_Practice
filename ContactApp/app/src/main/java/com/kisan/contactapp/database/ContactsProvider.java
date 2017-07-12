@@ -4,7 +4,6 @@ import android.net.Uri;
 
 import net.simonvt.schematic.annotation.ContentProvider;
 import net.simonvt.schematic.annotation.ContentUri;
-import net.simonvt.schematic.annotation.InexactContentUri;
 import net.simonvt.schematic.annotation.TableEndpoint;
 
 /**
@@ -37,15 +36,7 @@ public class ContactsProvider {
                 type = "vnd.android.cursor.dir/myContacts",
                 defaultSort = ColumnsContacts._ID + " ASC")
         public static final Uri CONTENT_URI = buildUri(Path.MY_CONTACTS);
-        @InexactContentUri(
-                path = Path.MY_CONTACTS + "/#",
-                name = "_ID",
-                type = "vnd.android.cursor.dir/myContacts",
-                whereColumn = ColumnsContacts._ID,
-                pathSegment = 1)
-        public static Uri withId(long id) {
-            return Uri.parse("content://" + AUTHORITY + "/myContacts/" + id);
-        }
+
 
     }
 

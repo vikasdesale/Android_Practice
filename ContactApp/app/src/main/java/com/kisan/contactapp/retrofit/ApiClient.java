@@ -13,7 +13,9 @@ public class ApiClient {
 
     public static final String BASE_URL = "https://eduapps.000webhostapp.com/";
     private static Retrofit retrofit = null;
-
+    public static final String AUTH_TOKEN="e49b756b87a2e1195e95996ba52e8157";
+    public static final String APP_SID = "AC82b6cee7cad92e99eff7550a170321c3";
+    public static final String PHONE_FROM= "+17866863332";
 
     /*public static Retrofit getClient() {
         if (retrofit == null) {

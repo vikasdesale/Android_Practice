@@ -26,6 +26,9 @@ public interface ColumnsSms {
     String MOBILE_NO = "mobileNo";
     @DataType(DataType.Type.TEXT)
     @NotNull
+    String MSG_CONTENT = "msgContent";
+    @DataType(DataType.Type.TEXT)
+    @NotNull
     String DATE_SENT = "sent_date";
     @DataType(DataType.Type.INTEGER)
     @NotNull
