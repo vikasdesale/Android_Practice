@@ -29,10 +29,10 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
           Fragment fragment=null;
         switch (position) {
             case CONTACTS:
-                fragment= new ContactFragment("" + getPageTitle(position));
+                fragment= new ContactFragment();
             break;
             case SMS_SENT:
-                fragment= new SmsFragment("" + getPageTitle(position));
+                fragment= new SmsFragment();
                 break;
         }
         return  fragment;

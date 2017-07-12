@@ -11,4 +11,9 @@
     <dimen name="fab_press_translation_z">6dp</dimen>
     <dimen name="fab_margin">24dp</dimen>
     <dimen name="detail_back_height">256dp</dimen>
+
+    <dimen name="padding_bottom">2dp</dimen>
+    <dimen name="padding_left">8dp</dimen>
+    <dimen name="padding_right">8dp</dimen>
+    <dimen name="padding_top">4dp</dimen>
 </resources>

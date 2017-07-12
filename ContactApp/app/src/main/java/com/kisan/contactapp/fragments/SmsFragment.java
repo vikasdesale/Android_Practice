@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.kisan.contactapp.R;
 
@@ -14,14 +13,10 @@ import com.kisan.contactapp.R;
 public class SmsFragment extends Fragment {
 
 
-String tab;
     public SmsFragment() {
         // Required empty public constructor
     }
 
-    public SmsFragment(String s) {
-         tab=s;
-    }
 
 
 
@@ -36,7 +31,6 @@ String tab;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_sms, container, false);
-        Toast.makeText(getContext(),"Tab "+tab, Toast.LENGTH_SHORT).show();
         return v;
     }
 

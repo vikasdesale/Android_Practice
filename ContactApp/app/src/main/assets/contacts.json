@@ -1,0 +1,33 @@
+{"contacts":[  
+      {  
+         "firstname":"vikas",
+         "lastname":"desale",
+        "phone":"+918600507926"
+      },
+     {  
+         "firstname":"nilesh",
+         "lastname":"siledar",
+        "phone":"+919971792703"
+      } ,  
+     {  
+         "firstname":"vivek",
+         "lastname":"modi",
+        "phone":"+919971792703"
+      } ,
+  {  
+         "firstname":"shubham",
+         "lastname":"som",
+        "phone":"+919971792703"
+      }  ,  
+   {  
+         "firstname":"mithilesh",
+         "lastname":"bansal",
+        "phone":"+919971792703"
+      },
+    {  
+         "firstname":"manik",
+         "lastname":"shashri",
+        "phone":"+919971792703"
+      } 
+   ]
+}
