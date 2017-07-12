@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +30,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Optional;
+import fr.castorflex.android.circularprogressbar.CircularProgressBar;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,32 +50,25 @@ import static com.kisan.contactapp.retrofit.ApiClient.PHONE_FROM;
 
 public class ContactDetailsActivity extends AppCompatActivity {
 
-    @Nullable
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @Nullable
     @BindView(R.id.textName)
     TextView textName;
-    @Nullable
     @BindView(R.id.textPhone)
     TextView textPhone;
-    @Nullable
     @BindView(R.id.sendSms)
     Button sendSms;
-    @Nullable
-    @BindView(R.id.phone_no)
     EditText phoneNo;
-    @Nullable
-    @BindView(R.id.msg)
     EditText msg;
-    @Nullable
-    @BindView(R.id.otp)
     EditText otp;
+    @BindView(R.id.progressbar)
+    CircularProgressBar progressbar;
     private ActionBar ab;
     private long id;
     private Cursor mCursor;
     Contact contact;
     int otp_number;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,7 +81,7 @@ public class ContactDetailsActivity extends AppCompatActivity {
         mCursor.moveToFirst();
         contact = new Contact(mCursor);
         textName.setText("Name: " + contact.getFirstname() + " " + contact.getLastname());
-        textPhone.setText("Contact No: "+contact.getPhone());
+        textPhone.setText("Contact No: " + contact.getPhone());
 
     }
 
@@ -114,8 +107,9 @@ public class ContactDetailsActivity extends AppCompatActivity {
     public void onViewClicked() {
         LayoutInflater layoutInflaterAndroid = LayoutInflater.from(this);
         View mView = layoutInflaterAndroid.inflate(R.layout.sms_dialog_box, null);
-        ButterKnife.bind(this, mView);
-
+        msg=mView.findViewById(R.id.msg);
+        otp=mView.findViewById(R.id.otp);
+        phoneNo=mView.findViewById(R.id.phone_no);
         phoneNo.setEnabled(false);
         otp.setEnabled(false);
         AlertDialog.Builder alertDialogBuilderUserInput;
@@ -126,15 +120,16 @@ public class ContactDetailsActivity extends AppCompatActivity {
         }
 
         alertDialogBuilderUserInput.setView(mView);
-        phoneNo.setText(""+contact.getPhone());
-        otp_number=getRandom();
-        otp.setText("Hi your otp is: "+otp_number);
+        phoneNo.setText("" + contact.getPhone());
+        otp_number = getRandom();
+        otp.setText("Hi your otp is: " + otp_number);
         alertDialogBuilderUserInput
                 .setCancelable(false)
                 .setPositiveButton("Send", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogBox, int id) {
-                       sendMessage(getApplicationContext(),msg.getText()+" "+otp.getText().toString(),phoneNo.getText().toString(),
-                               PHONE_FROM,otp_number,contact.getFirstname(),contact.getLastname());
+                        progressbar.setVisibility(View.VISIBLE);
+                        sendMessage(getApplicationContext(), msg.getText() + " " + otp.getText().toString(), phoneNo.getText().toString(),
+                                PHONE_FROM, otp_number, contact.getFirstname(), contact.getLastname());
 
                     }
                 })
@@ -153,7 +148,8 @@ public class ContactDetailsActivity extends AppCompatActivity {
     public int getRandom() {
         return 10000 + (int) (Math.random() * ((99999 - 10000) + 99999));
     }
-    private void sendMessage(final Context context, final String body, final String to, String from, final int otp_number, final  String firstName, final String lastName) {
+
+    private void sendMessage(final Context context, final String body, final String to, String from, final int otp_number, final String firstName, final String lastName) {
 
 
         String base64EncodedCredentials = "Basic " + Base64.encodeToString(
@@ -179,12 +175,16 @@ public class ContactDetailsActivity extends AppCompatActivity {
                     values.put(ColumnsSms.FIRSTNAME, firstName);
                     values.put(ColumnsSms.LASTNAME, lastName);
                     values.put(ColumnsSms.MOBILE_NO, to);
-                    values.put(ColumnsSms.MSG_CONTENT,body);
-                    values.put(ColumnsSms.DATE_SENT,System.currentTimeMillis());
-                    values.put(ColumnsSms.OTP_GENERATE,otp_number);
+                    values.put(ColumnsSms.MSG_CONTENT, body);
+                    values.put(ColumnsSms.DATE_SENT, System.currentTimeMillis());
+                    values.put(ColumnsSms.OTP_GENERATE, otp_number);
 
-                    insertSmsSent(context,values);
-                }else{ Log.d("TAG", "onResponse->failure");}
+                    insertSmsSent(context, values);
+                    progressbar.setVisibility(View.GONE);
+
+                } else {
+                    Log.d("TAG", "onResponse->failure");
+                }
             }
 
             @Override
@@ -193,6 +193,7 @@ public class ContactDetailsActivity extends AppCompatActivity {
             }
         });
     }
+
     interface TwilioApi {
         @FormUrlEncoded
         @POST("Accounts/{ACCOUNT_SID}/SMS/Messages.json")

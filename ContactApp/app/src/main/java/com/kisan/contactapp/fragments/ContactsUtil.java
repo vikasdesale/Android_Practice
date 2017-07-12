@@ -10,7 +10,9 @@ import com.kisan.contactapp.database.ColumnsContacts;
 import com.kisan.contactapp.database.ContactsProvider;
 import com.kisan.contactapp.parcelable.Contact;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Dell on 7/12/2017.
@@ -50,6 +52,14 @@ public class ContactsUtil {
     public Cursor allContactCursor(Context context) {
         c = null;
         c = context.getContentResolver().query(ContactsProvider.MyContacts.CONTENT_URI,
+                null, null, null, null);
+        return c;
+
+
+    }
+    public Cursor allSmsCursor(Context context) {
+        c = null;
+        c = context.getContentResolver().query(ContactsProvider.MySmsSent.CONTENT_URI_SMS_SENT,
                 null, null, null, null);
         return c;
 
@@ -99,5 +109,12 @@ public class ContactsUtil {
         }
 
         return 0;
+    }
+    // convert date to format as 5 hours ago
+    public static String manipulateDateFormat(String post_date) {
+
+        Date date = new Date(Long.parseLong(post_date));
+        return DateFormat.getDateInstance().format(date);
+
     }
 }
