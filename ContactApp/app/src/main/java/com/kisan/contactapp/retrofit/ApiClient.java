@@ -1,7 +1,8 @@
 package com.kisan.contactapp.retrofit;
 
+import com.kisan.contactapp.BuildConfig;
+
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -12,29 +13,30 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
 
     public static final String BASE_URL = "https://eduapps.000webhostapp.com/";
+    public static final String AUTH_TOKEN = BuildConfig.AUTH_TOKEN;
+    public static final String APP_SID = BuildConfig.AUTH_SID;
+    public static final String PHONE_FROM = "+17866863332";
+    public static final String BASE_URL_SMS = "https://api.twilio.com/2010-04-01/";
     private static Retrofit retrofit = null;
-    public static final String AUTH_TOKEN="e49b756b87a2e1195e95996ba52e8157";
-    public static final String APP_SID = "AC82b6cee7cad92e99eff7550a170321c3";
-    public static final String PHONE_FROM= "+17866863332";
+    private static Retrofit retrofit2 = null;
 
-    /*public static Retrofit getClient() {
-        if (retrofit == null) {
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-        }
-        return retrofit;
-    }*/
     public static Retrofit getClient2() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .baseUrl(BASE_URL)
                     .build();
         }
         return retrofit;
+    }
+
+    public static Retrofit getClientSms() {
+        if (retrofit2 == null) {
+            retrofit2 = new Retrofit.Builder()
+                    .baseUrl(BASE_URL_SMS)
+                    .build();
+        }
+        return retrofit2;
     }
 
 }

@@ -15,33 +15,34 @@ import com.kisan.contactapp.fragments.SmsFragment;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
-    int TAB_COUNT=2;
-    final static int CONTACTS=0;
-    final static int SMS_SENT=1;
+    final static int CONTACTS = 0;
+    final static int SMS_SENT = 1;
+    int TAB_COUNT = 2;
     Context mContext;
+
     public ViewPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
-        mContext=context;
+        mContext = context;
     }
 
     @Override
     public Fragment getItem(int position) {
-          Fragment fragment=null;
+        Fragment fragment = null;
         switch (position) {
             case CONTACTS:
-                fragment= new ContactFragment();
-            break;
+                fragment = new ContactFragment();
+                break;
             case SMS_SENT:
-                fragment= new SmsFragment();
+                fragment = new SmsFragment();
                 break;
         }
-        return  fragment;
+        return fragment;
     }
 
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return  mContext.getResources().getStringArray(R.array.tabs)[position];
+        return mContext.getResources().getStringArray(R.array.tabs)[position];
     }
 
     @Override

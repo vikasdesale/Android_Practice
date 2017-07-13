@@ -1,4 +1,4 @@
-package com.kisan.contactapp.retrofit;
+package com.kisan.contactapp.util;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

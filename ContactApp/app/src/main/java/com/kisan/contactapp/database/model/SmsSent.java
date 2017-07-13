@@ -1,17 +1,15 @@
-package com.kisan.contactapp.parcelable;
+package com.kisan.contactapp.database.model;
 
 import android.database.Cursor;
 
-import com.kisan.contactapp.database.ColumnsSms;
-
-import static com.kisan.contactapp.fragments.ContactsUtil.getColumnLong;
-import static com.kisan.contactapp.fragments.ContactsUtil.getColumnString;
+import static com.kisan.contactapp.util.ContactsUtil.getColumnLong;
+import static com.kisan.contactapp.util.ContactsUtil.getColumnString;
 
 /**
  * Created by Dell on 7/12/2017.
  */
 
-public class SmsSent{
+public class SmsSent {
     public final Long id;
     private String firstname;
     private String lastname;
@@ -19,6 +17,19 @@ public class SmsSent{
     private String smsContent;
     private String date_time;
     private String otp;
+
+    public SmsSent(Cursor cursor) {
+        this.id = getColumnLong(cursor, ColumnsSms._ID);
+        this.firstname = getColumnString(cursor, ColumnsSms.FIRSTNAME);
+        this.lastname = getColumnString(cursor, ColumnsSms.LASTNAME);
+        this.phone = getColumnString(cursor, ColumnsSms.MOBILE_NO);
+        this.smsContent = getColumnString(cursor, ColumnsSms.MSG_CONTENT);
+        this.date_time = getColumnString(cursor, ColumnsSms.DATE_SENT);
+        this.otp = getColumnString(cursor, ColumnsSms.OTP_GENERATE);
+
+
+    }
+
     public String getFirstname() {
         return firstname;
     }
@@ -65,18 +76,5 @@ public class SmsSent{
 
     public void setOtp(String otp) {
         this.otp = otp;
-    }
-
-
-    public SmsSent(Cursor  cursor) {
-            this.id = getColumnLong(cursor, ColumnsSms._ID);
-            this.firstname = getColumnString(cursor, ColumnsSms.FIRSTNAME);
-            this.lastname = getColumnString(cursor, ColumnsSms.LASTNAME);
-            this.phone = getColumnString(cursor, ColumnsSms.MOBILE_NO);
-        this.smsContent = getColumnString(cursor, ColumnsSms.MSG_CONTENT);
-        this.date_time=getColumnString(cursor, ColumnsSms.DATE_SENT);
-       this.otp= getColumnString(cursor, ColumnsSms.OTP_GENERATE);
-
-
     }
 }

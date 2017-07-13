@@ -1,15 +1,12 @@
-
 package com.kisan.contactapp.retrofit;
 
 
-
 import com.google.gson.annotations.SerializedName;
-import com.kisan.contactapp.parcelable.Contact;
+import com.kisan.contactapp.database.model.Contact;
 
 import java.util.List;
 
-public class ContactsResponse
-{
+public class ContactsResponse {
     @SerializedName("contacts")
     private List<Contact> contacts = null;
 

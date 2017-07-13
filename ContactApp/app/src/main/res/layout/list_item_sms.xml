@@ -48,7 +48,7 @@
                 android:paddingStart="@dimen/padding_right"
                 android:paddingTop="@dimen/padding_top"
                 android:textColor="@color/primary_text"
-                android:textSize="15dp" />
+                android:textSize="15sp" />
             <TextView
                 android:id="@+id/contact_otp"
                 android:padding="16dp"

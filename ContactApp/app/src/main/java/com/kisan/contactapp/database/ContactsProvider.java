@@ -2,6 +2,9 @@ package com.kisan.contactapp.database;
 
 import android.net.Uri;
 
+import com.kisan.contactapp.database.model.ColumnsContacts;
+import com.kisan.contactapp.database.model.ColumnsSms;
+
 import net.simonvt.schematic.annotation.ContentProvider;
 import net.simonvt.schematic.annotation.ContentUri;
 import net.simonvt.schematic.annotation.TableEndpoint;

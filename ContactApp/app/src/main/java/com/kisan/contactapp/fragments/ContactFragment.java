@@ -5,24 +5,39 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.kisan.contactapp.ContactAdapter;
-import com.kisan.contactapp.ContactDetailsActivity;
 import com.kisan.contactapp.R;
-import com.kisan.contactapp.parcelable.Contact;
-import com.kisan.contactapp.retrofit.NetworkUtil;
+import com.kisan.contactapp.activities.ContactDetailsActivity;
+import com.kisan.contactapp.adapter.ContactAdapter;
+import com.kisan.contactapp.database.ContactsProvider;
+import com.kisan.contactapp.database.model.Contact;
+import com.kisan.contactapp.retrofit.RetrofitCall;
+import com.kisan.contactapp.util.ContactsUtil;
+import com.kisan.contactapp.util.NetworkUtil;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 
 public class ContactFragment extends Fragment implements
-        ContactAdapter.OnItemClickListener{
-    RecyclerView mRecyclerView;
+        ContactAdapter.OnItemClickListener, LoaderManager.LoaderCallbacks<Cursor> {
+    private static final int CONTACT_LOADER_ID = 1;
     ContactsUtil mContactsUtil;
-String tab;
+    @BindView(R.id.card_recycler_view)
+    RecyclerView mRecyclerView;
+    @BindView(R.id.recyclerview_contact_empty)
+    TextView emptyView;
+    Unbinder unbinder;
     private ContactAdapter contactAdapter;
 
     public ContactFragment() {
@@ -30,10 +45,11 @@ String tab;
     }
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+        setHasOptionsMenu(true);
 
     }
 
@@ -41,59 +57,53 @@ String tab;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v=inflater.inflate(R.layout.fragment_contact, container, false);
-         mRecyclerView = (RecyclerView)v.findViewById(R.id.card_recycler_view);
-        mContactsUtil=new ContactsUtil();
-        if (!NetworkUtil.isNetworkConnected(getActivity())) {
-        } else {
-            mContactsUtil.CacheDelete(getContext());
-            RetrofitCall r = new RetrofitCall();
-            r.fetchContacts(getContext());
-            RetrofitCall.onRetrofit(new RetrofitCall.RetrofitCallback() {
-                @Override
-                public void onRetrofitCall(int article) {
-                    // Send update broadcast to update the widget
-                    //  getContext().sendBroadcast(new Intent(getString(R.string.widget_action)));
-                    //progressBar.setVisibility(View.GONE);
-                    //progressBar2.setVisibility(View.GONE);
-                    allNewsWindow();
-                    if (article == 1) {
-                        //  progressBar.setVisibility(View.GONE);
-                        //progressBar2.setVisibility(View.GONE);
-//                        Snackbar snackbar = Snackbar
-                        //                              .make(contLayout, R.string.network_data_not_found, Snackbar.LENGTH_LONG);
+        View v = inflater.inflate(R.layout.fragment_contact, container, false);
+        unbinder = ButterKnife.bind(this, v);
 
-                        //                    snackbar.show();
-                    }
-                }
-            });
-        }
-        return v;
-    }
-    //Load All Movies from temporary database
-    private void allNewsWindow() {
-        try {
-           Cursor cursor = mContactsUtil.allContactCursor(getActivity());
-            setUpAdapter(cursor);
-        } catch (Exception e) {
-
-        }
-
-    }
-    private void setUpAdapter(Cursor c) {
+        mContactsUtil = new ContactsUtil();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
-        contactAdapter = new ContactAdapter(c);
-        //mNewsLoader = mNewsLoader.newInstance(favflag, this, gridAdapter);
-        //gridAdapter = new NewsRecyclerViewAdapter(getActivity(), c);
-        //mNewsLoader.initLoader();
+        contactAdapter = new ContactAdapter(null);
         contactAdapter.setOnItemClickListener(this);
-        if (mRecyclerView != null)
-            mRecyclerView.setAdapter(contactAdapter);
-        // Send update broadcast to update the widget
+        mRecyclerView.setAdapter(contactAdapter);
+        updateContact();
+        return v;
     }
+
+    private void updateContact() {
+        if (!NetworkUtil.isNetworkConnected(getActivity())) {
+            mRecyclerView.setVisibility(View.GONE);
+            emptyView.setText(R.string.no_internet_connection);
+            emptyView.setVisibility(View.VISIBLE);
+        } else {
+            mRecyclerView.setVisibility(View.VISIBLE);
+            emptyView.setVisibility(View.GONE);
+            if (getContext().getContentResolver().query(ContactsProvider.MyContacts.CONTENT_URI,
+                    null, null, null, null).getCount() != 0) {
+
+            } else {
+                mContactsUtil.CacheDelete(getContext());
+                RetrofitCall r = new RetrofitCall();
+                r.fetchContacts(getContext());
+                r.onRetrofit(new RetrofitCall.RetrofitCallback() {
+                    @Override
+                    public void onRetrofitCall(int article) {
+                        if (article == 1) {
+                            mRecyclerView.setVisibility(View.GONE);
+                            emptyView.setText(R.string.empty_contacts_list);
+                            emptyView.setVisibility(View.VISIBLE);
+
+                        }
+                    }
+                });
+
+            }
+        }
+        getLoaderManager().initLoader(CONTACT_LOADER_ID, null, this);
+    }
+
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -110,7 +120,35 @@ String tab;
     public void onItemClick(View v, int position) {
         Contact task = contactAdapter.getItem(position);
         Intent intent = new Intent(getContext(), ContactDetailsActivity.class);
-        intent.putExtra("id",task.id);
+        intent.putExtra("id", task.id);
         startActivity(intent);
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return new CursorLoader(getActivity(), ContactsProvider.MyContacts.CONTENT_URI,
+                null,
+                null,
+                null,
+                null);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        if (contactAdapter != null) {
+            contactAdapter.swapCursor(data);
+        }
+
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        contactAdapter.swapCursor(null);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 }

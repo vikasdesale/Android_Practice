@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_news_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,5 +11,14 @@
         android:id="@+id/card_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
+    <!-- empty list -->
+    <TextView
+        android:id="@+id/recyclerview_contact_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_anchor="@+id/card_recycler_view"
+        app:layout_anchorGravity="fill"
+        android:textColor="@color/accent"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/empty_contacts_list" />
 </LinearLayout>

@@ -1,27 +1,19 @@
-
-package com.kisan.contactapp.parcelable;
+package com.kisan.contactapp.database.model;
 
 import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.kisan.contactapp.database.ColumnsContacts;
+import static com.kisan.contactapp.util.ContactsUtil.getColumnLong;
+import static com.kisan.contactapp.util.ContactsUtil.getColumnString;
 
-import static com.kisan.contactapp.fragments.ContactsUtil.getColumnLong;
-import static com.kisan.contactapp.fragments.ContactsUtil.getColumnString;
+public class Contact implements Parcelable {
 
-public class Contact implements Parcelable
-{
-
-    public final Long id;
-    private String firstname;
-    private String lastname;
-    private String phone;
     public final static Creator<Contact> CREATOR = new Creator<Contact>() {
 
 
         @SuppressWarnings({
-            "unchecked"
+                "unchecked"
         })
         public Contact createFromParcel(Parcel in) {
             Contact instance = new Contact(null);
@@ -35,9 +27,12 @@ public class Contact implements Parcelable
             return (new Contact[size]);
         }
 
-    }
-    ;
+    };
     private final static long serialVersionUID = 9069196970472270690L;
+    public final Long id;
+    private String firstname;
+    private String lastname;
+    private String phone;
 
     public Contact(Cursor cursor) {
         this.id = getColumnLong(cursor, ColumnsContacts._ID);
@@ -78,7 +73,7 @@ public class Contact implements Parcelable
     }
 
     public int describeContents() {
-        return  0;
+        return 0;
     }
 
 }

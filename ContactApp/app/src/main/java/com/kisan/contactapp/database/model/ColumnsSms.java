@@ -1,4 +1,4 @@
-package com.kisan.contactapp.database;
+package com.kisan.contactapp.database.model;
 
 import net.simonvt.schematic.annotation.AutoIncrement;
 import net.simonvt.schematic.annotation.DataType;

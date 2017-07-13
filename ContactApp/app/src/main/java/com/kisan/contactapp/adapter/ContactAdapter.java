@@ -1,4 +1,4 @@
-package com.kisan.contactapp;
+package com.kisan.contactapp.adapter;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -8,7 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.kisan.contactapp.parcelable.Contact;
+import com.kisan.contactapp.R;
+import com.kisan.contactapp.database.model.Contact;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactHolder> {
 
@@ -23,7 +27,6 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactH
     public void setOnItemClickListener(OnItemClickListener listener) {
         mOnItemClickListener = listener;
     }
-
 
 
     private void postItemClick(ContactHolder holder) {
@@ -44,7 +47,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactH
     @Override
     public void onBindViewHolder(ContactHolder holder, int position) {
         Contact task = getItem(position);
-        holder.contactName.setText("Name: "+task.getFirstname()+" "+task.getLastname());
+        holder.contactName.setText("Name: " + task.getFirstname() + " " + task.getLastname());
 
     }
 
@@ -73,6 +76,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactH
         }
         mCursor = cursor;
         notifyDataSetChanged();
+
     }
 
     /* Callback for list item click events */
@@ -81,21 +85,22 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactH
 
     }
 
+
     /* ViewHolder for each task item */
     public class ContactHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView contactName;
+
+        @BindView(R.id.contact_name)
+        TextView contactName;
+
         public ContactHolder(View itemView) {
             super(itemView);
-
-            contactName = (TextView) itemView.findViewById(R.id.contact_name);
-
-
+            ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-                postItemClick(this);
+            postItemClick(this);
         }
     }
 }

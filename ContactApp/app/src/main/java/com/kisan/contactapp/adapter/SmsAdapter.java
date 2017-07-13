@@ -1,4 +1,4 @@
-package com.kisan.contactapp;
+package com.kisan.contactapp.adapter;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -8,16 +8,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.kisan.contactapp.parcelable.SmsSent;
+import com.kisan.contactapp.R;
+import com.kisan.contactapp.database.model.SmsSent;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.kisan.contactapp.fragments.ContactsUtil.manipulateDateFormat;
+import static com.kisan.contactapp.util.ContactsUtil.manipulateDateFormat;
 
 public class SmsAdapter extends RecyclerView.Adapter<SmsAdapter.SmsHolder> {
 
-    
+
     private Cursor mCursor;
     private OnItemClickListener mOnItemClickListener;
     private Context mContext;
@@ -48,10 +49,11 @@ public class SmsAdapter extends RecyclerView.Adapter<SmsAdapter.SmsHolder> {
 
     @Override
     public void onBindViewHolder(SmsHolder holder, int position) {
-        SmsSent sms=getItem(position);
-        holder.contactName.setText("Name: " + sms.getFirstname() + " " + sms.getLastname());
-        holder.contactOtp.setText("OTP: "+sms.getOtp());
-        holder.contactDate.setText("Date: "+manipulateDateFormat(sms.getDate_time()));
+        SmsSent sms = getItem(position);
+        holder.contactName.setText(mContext.getString(R.string.name) + sms.getFirstname() + " " + sms.getLastname());
+        holder.contactOtp.setText(mContext.getString(R.string.your_otp) + sms.getOtp());
+        holder.contactDate.setText(mContext.getString(R.string.otp) + manipulateDateFormat(sms.getDate_time()));
+        
     }
 
     @Override
@@ -95,6 +97,7 @@ public class SmsAdapter extends RecyclerView.Adapter<SmsAdapter.SmsHolder> {
         TextView contactDate;
         @BindView(R.id.contact_otp)
         TextView contactOtp;
+
         public SmsHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

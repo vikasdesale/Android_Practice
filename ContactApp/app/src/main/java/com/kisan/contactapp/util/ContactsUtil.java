@@ -1,4 +1,4 @@
-package com.kisan.contactapp.fragments;
+package com.kisan.contactapp.util;
 
 import android.content.ContentProviderOperation;
 import android.content.ContentValues;
@@ -6,9 +6,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
 
-import com.kisan.contactapp.database.ColumnsContacts;
 import com.kisan.contactapp.database.ContactsProvider;
-import com.kisan.contactapp.parcelable.Contact;
+import com.kisan.contactapp.database.model.ColumnsContacts;
+import com.kisan.contactapp.database.model.Contact;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ import java.util.Date;
 
 public class ContactsUtil {
 
-    private static final String TAG ="vikas" ;
+    private static final String TAG = "vikas";
     Cursor c;
     int count = 0;
 
@@ -49,32 +49,25 @@ public class ContactsUtil {
         return cursor.getLong(cursor.getColumnIndex(columnName));
     }
 
-    public Cursor allContactCursor(Context context) {
-        c = null;
-        c = context.getContentResolver().query(ContactsProvider.MyContacts.CONTENT_URI,
-                null, null, null, null);
-        return c;
 
-
-    }
-    public Cursor allSmsCursor(Context context) {
-        c = null;
-        c = context.getContentResolver().query(ContactsProvider.MySmsSent.CONTENT_URI_SMS_SENT,
-                null, null, null, null);
-        return c;
-
-
-    }
-
-    public static int insertSmsSent(Context context,ContentValues values) {
-        if ( context.getContentResolver().insert(
-                ContactsProvider.MySmsSent.CONTENT_URI_SMS_SENT,values)!=null) {
+    public static int insertSmsSent(Context context, ContentValues values) {
+        if (context.getContentResolver().insert(
+                ContactsProvider.MySmsSent.CONTENT_URI_SMS_SENT, values) != null) {
             Log.e(TAG, "Inserted new task");
         } else {
             Log.e(TAG, "Error inserting new task");
         }
         return 0;
     }
+
+    // convert date to format as 5 hours ago
+    public static String manipulateDateFormat(String post_date) {
+
+        Date date = new Date(Long.parseLong(post_date));
+        return DateFormat.getDateInstance().format(date);
+
+    }
+
     public int insertData(Context context, ArrayList<Contact> contactArrayList) {
         c = null;
         int flag = 0;
@@ -109,12 +102,5 @@ public class ContactsUtil {
         }
 
         return 0;
-    }
-    // convert date to format as 5 hours ago
-    public static String manipulateDateFormat(String post_date) {
-
-        Date date = new Date(Long.parseLong(post_date));
-        return DateFormat.getDateInstance().format(date);
-
     }
 }

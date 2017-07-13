@@ -1,5 +1,8 @@
 package com.kisan.contactapp.database;
 
+import com.kisan.contactapp.database.model.ColumnsContacts;
+import com.kisan.contactapp.database.model.ColumnsSms;
+
 import net.simonvt.schematic.annotation.Database;
 import net.simonvt.schematic.annotation.Table;
 
