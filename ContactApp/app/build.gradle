@@ -50,9 +50,6 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
     // The Client SDK resides on jCenter
     compile 'com.twilio:client-android:1.2.18'
-
-    //smooth progress bar
-    compile 'com.github.castorflex.smoothprogressbar:library-circular:1.0.0'
     testCompile 'junit:junit:4.12'
 
     // Testing-only dependencies
